@@ -6,12 +6,16 @@ class TeamsController < ApplicationController
       :include => {
         :players => {
           :include => {
-            :sponsers => {
-              :only => :name
+            :sponsers => { 
+              :include => {
+                :deals => {
+                  :only => :amount 
+                }
+              }, :only => :name
             }
-          }
+          }, :only => :name
         }
-      }
+      }, :only => [ :name, :location ]
     })
   end
 
@@ -21,7 +25,7 @@ class TeamsController < ApplicationController
   end
 
   def create
-    Team.create( name: params[ :name ], location: params[ :location ] )
+    Team.create( name: params[ :name ], location: params[ :location])
   end
 
 end
