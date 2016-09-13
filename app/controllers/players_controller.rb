@@ -10,4 +10,8 @@ class PlayersController < ApplicationController
     render json: player.as_json( { include: :sponsers } )
   end
 
+  def create
+    Player.create( name: params[ :name ] )
+  end
+
 end

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
 
-  resources :teams do
-    resources :players do
-      resources :deals
-    end
-  end
+  resources :teams 
+
+  resources :players
+
+  resources :deals
 
   resources :sponsers
 

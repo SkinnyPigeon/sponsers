@@ -1,9 +1,5 @@
 class TeamsController < ApplicationController
 
-  def give
-    return { name: "steve" }
-  end
-
   def index
     teams = Team.all
     render json: teams.as_json({
@@ -22,6 +18,10 @@ class TeamsController < ApplicationController
   def show
     team = Team.find( params[ :id] )
     render json: team.as_json( { include: :players } )
+  end
+
+  def create
+    Team.create( name: params[ :name ], location: params[ :location ] )
   end
 
 end

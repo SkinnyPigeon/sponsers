@@ -10,4 +10,8 @@ class DealsController < ApplicationController
     render json: deal
   end
 
+  def create
+    Deal.create( player_id: params[ :player_id ], sponser_id: params[ :sponser_id ], amount: params[ :amount ] )
+  end
+
 end

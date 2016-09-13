@@ -10,4 +10,8 @@ class SponsersController < ApplicationController
     render json: sponser
   end
 
+  def create
+    Sponser.create( name: params[ :name ] )
+  end
+
 end
